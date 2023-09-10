@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 //import queryClient from "./queryClient";
+
 import NavBar from "./components/Navbar/Navbar";
 import Map from "./components/Map/Map.jsx";
 
@@ -10,7 +11,7 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <QueryClientProvider client={queryClient}>
         <NavBar />
         <Map />

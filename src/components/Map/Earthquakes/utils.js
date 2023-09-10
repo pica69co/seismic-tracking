@@ -7,7 +7,8 @@ const timeConverter = (time, offset) => {
   return nd.toLocaleString();
 };
 
-const onEachFeature = (feature, layer) => {
+
+const onEachFeature = (feature, layer=Layer) => {
   const {
     properties: { title, place, time, mag, url },
     geometry: { coordinates }
@@ -15,13 +16,13 @@ const onEachFeature = (feature, layer) => {
 
   const popupContent = `
     <h3 style="font-size: 1.17em; font-weight: bold">${title}</h3>
-    <b>Lieu</b>: ${place ?? 'Inconnue'} <br>
-    <b>Temps (GMT+2)</b>: ${timeConverter(time, 2)} <br>
-    <b>Latitude</b>: ${coordinates[1]} <br>
-    <b>Longitude</b>: ${coordinates[0]} <br>
-    <b>Profondeur</b>: ${coordinates[2]} km <br>
-    <b>Magnitude</b>: ${mag} sur l'échelle de Richter <br>
-    <b>Détails</b>: <a href=${url}>Cliquer ici pour voir plus de détails</a>
+    <b>Location</b>: ${place ?? 'Unknown'} <br>
+    <b>Hour (GMT-5)</b>: ${timeConverter(time, 2)} <br>
+    <b>Lat</b>: ${coordinates[1]} <br>
+    <b>Long</b>: ${coordinates[0]} <br>
+    <b>Depth</b>: ${coordinates[2]} km <br>
+    <b>Magnitude</b>: ${mag} On Richter Scale <br>
+    <b>Details</b>: <a href=${url}>Click here + details</a>
   `;
 
   layer.bindPopup(popupContent);
