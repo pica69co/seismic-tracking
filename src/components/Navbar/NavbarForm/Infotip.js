@@ -15,7 +15,7 @@ export default function InfoTip({
       target={target}
       toggle={openTooltip}>
       Insert date  
-      <span>{target === 'startTime' ? ' début ' : ' fin '}</span>
+      <span>{target === 'startTime' ? ' start ' : ' fin '}</span>
       in format: YY/MM/AAAA
     </Tooltip>
   );

@@ -60,7 +60,7 @@ export default function Earthquakes() {
 <Modal
   isOpen={modalIsOpen}
   onRequestClose={closeModal}
-  contentLabel="Problème avec la période"
+  contentLabel="Upss, Something went wrong!"
   style={{
     overlay: {
       zIndex: 1000
@@ -81,8 +81,8 @@ export default function Earthquakes() {
   }}
 >
   <div>
-    <p>Veuillez réduire la période sélectionnée (le nombre d&apos;évènements sismiques doit être inférieur à 20000).</p>
-    <button type="button" onClick={closeModal}>Fermer</button>
+    <p>Please reduce the selected period (the number d&apos;seismic events must be less than 20,000).</p>
+    <button type="button" onClick={closeModal}>Close</button>
   </div>
 </Modal>
 

@@ -22,15 +22,7 @@ export default function DropdownList() {
     setDropdownOpen((prevState) => (prevState ? false : true));
   };
 
-  // const selectNumOfDays = (e: React.MouseEvent<HTMLElement>): void => {
-  //   const dropdownvalue = e.currentTarget.textContent;
-  //   if (dropdownvalue) {
-  //     setNumOfDays(dropdownvalue);
-  //     setStartTime(convertDropdownValue(dropdownvalue));
-  //   }
-  // };
-
-  const selectNumOfDays = (name, nameFr) => {
+   const selectNumOfDays = (name, nameFr) => {
     setNumOfDays(nameFr);
     setStartTime(convertDropdownValue(name));
   };
