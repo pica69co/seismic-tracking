@@ -1,12 +1,16 @@
 import { Tooltip } from 'reactstrap';
 
+interface InfoTipProps {
+  setTooltipOpen: (tooltipOpen: boolean) => void;
+  target: string;
+  tooltipOpen: boolean;
+}
 
 export default function InfoTip({
   setTooltipOpen,
   target,
   tooltipOpen
-  })
- {
+}: InfoTipProps) {
   const openTooltip = () => setTooltipOpen(!tooltipOpen);
   return (
     <Tooltip
@@ -14,9 +18,9 @@ export default function InfoTip({
       isOpen={tooltipOpen}
       target={target}
       toggle={openTooltip}>
-      Insert date  
-      <span>{target === 'startTime' ? ' start ' : ' fin '}</span>
-      in format: YY/MM/AAAA
+        
+      <span>{target === 'startTime' ? ' begin ' : ' end '}</span>
+      
     </Tooltip>
   );
 }

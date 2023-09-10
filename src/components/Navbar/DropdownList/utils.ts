@@ -1,5 +1,4 @@
-
-const convertDropdownValue = (dropdownvalue) => {
+const convertDropdownValue = (dropdownvalue: string): string => {
   const now = 'NOW - ';
   switch (dropdownvalue) {
     case '1 day':

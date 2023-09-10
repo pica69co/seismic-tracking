@@ -5,18 +5,19 @@ import { useQuery } from '@tanstack/react-query';
 
 import { AxiosError } from 'axios';
 import Modal from 'react-modal';
-import Spinner from '../../Spinner/Spinner';
+import Spinner from '../../Spinner';
 import { onEachFeature } from './utils';
 import { geojsonMarkerOptions } from '../utils';
 import { getEarthquakes } from '../../../api/earthquakes';
-import  useStore  from '../../../hooks/useStore';
+import { FeatureProps } from './models';
+import { useStore } from '../../../hooks';
 
-let geojson = GeoJSON;
+let geojson: GeoJSON;
 
 export default function Earthquakes() {
   const startTime = useStore((state) => state.startTime);
   const endTime = useStore((state) => state.endTime);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<AxiosError | null>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -27,7 +28,7 @@ export default function Earthquakes() {
     ['earthquakes', startTime, endTime],
     () => getEarthquakes(startTime, endTime),
     {
-      onError: (dataError) => {
+      onError: (dataError: AxiosError) => {
         if (dataError.response && dataError.response.status === 400) {
           setError(dataError);
           setModalIsOpen(true);
@@ -44,7 +45,7 @@ export default function Earthquakes() {
 
     geojson = L.geoJSON(earthquakes.features, {
       onEachFeature,
-      pointToLayer: (feature, latlng) => {
+      pointToLayer: (feature: FeatureProps, latlng: LatLng) => {
         const magnitude = feature.properties.mag;
         return L.circleMarker(latlng, geojsonMarkerOptions(magnitude));
       }
@@ -60,7 +61,7 @@ export default function Earthquakes() {
 <Modal
   isOpen={modalIsOpen}
   onRequestClose={closeModal}
-  contentLabel="Upss, Something went wrong!"
+  contentLabel="Time Line Error"
   style={{
     overlay: {
       zIndex: 1000
@@ -81,7 +82,7 @@ export default function Earthquakes() {
   }}
 >
   <div>
-    <p>Please reduce the selected period (the number d&apos;seismic events must be less than 20,000).</p>
+    <p>Please reduce the selected period (the  d&apos;number of seismic events must be less than 20000).</p>
     <button type="button" onClick={closeModal}>Close</button>
   </div>
 </Modal>

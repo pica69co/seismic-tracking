@@ -7,7 +7,7 @@ import {
 } from 'reactstrap';
 
 import { Container } from './styles';
-import  useStore  from '../../../hooks/useStore';
+import { useStore } from '../../../hooks';
 import convertDropdownValue from './utils';
 import { periods } from './constants';
 
@@ -22,7 +22,7 @@ export default function DropdownList() {
     setDropdownOpen((prevState) => (prevState ? false : true));
   };
 
-   const selectNumOfDays = (name, nameFr) => {
+  const selectNumOfDays = (name: string, nameFr: string) => {
     setNumOfDays(nameFr);
     setStartTime(convertDropdownValue(name));
   };

@@ -2,7 +2,7 @@ import { useState, FormEvent, ChangeEvent } from 'react';
 
 import { EndTimeInput, Icon } from './styles';
 import InfoTip from './Infotip';
-import  useStore  from '../../../hooks/useStore';
+import { useStore } from '../../../hooks';
 
 export default function NavBarForm() {
   const [startTime, setStartTime] = useState('');
@@ -16,10 +16,10 @@ export default function NavBarForm() {
   const [endTimeTooltipOpen, setEndTimeTooltipOpen] = useState(false);
   const [toggleIcon, setToggleIcon] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // clear dropdown default value
-    setNumOfDays('Select time');
+    setNumOfDays('Select time line');
     // pass the query params to be able to perform query
     setGlobalStartTime(startTime);
     setGlobalEndTime(endTime);
@@ -30,11 +30,11 @@ export default function NavBarForm() {
 
   const changeIcon = () => setToggleIcon(!toggleIcon);
 
-  const handleStartTimeChange = (e) => {
+  const handleStartTimeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStartTime(e.target.value);
   };
 
-  const handleEndTimeChange = (e) => {
+  const handleEndTimeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEndTime(e.target.value);
   };
 
