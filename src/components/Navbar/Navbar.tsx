@@ -4,7 +4,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from 'reactstrap';
 import DropdownList from './DropdownList';
 import NavBarForm from './NavbarForm';
 
-const brandStyle = { color: '#ffffff' };
+const brandStyle = { color: '#1a1a1a', fontWeight: 'bold' };
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +12,7 @@ export default function NavBar() {
   const toggleNavbar = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar color="dark" dark expand="md">
+    <Navbar color="light" dark expand="md">
       <NavbarBrand style={brandStyle}>World Seismic Tracking</NavbarBrand>
       <NavbarToggler onClick={toggleNavbar} />
       <Collapse isOpen={isOpen} navbar>
