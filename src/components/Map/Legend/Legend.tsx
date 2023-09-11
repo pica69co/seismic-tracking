@@ -17,8 +17,8 @@ export default function Legend() {
       const div = DomUtil.create('div', 'info legend');
       const grades = [0, 1, 2, 3, 5, 7];
       const labels = [];
-
-      labels.push('<h4>Magnitude</h4>');
+      
+      labels.push('<h4>&copy;OscarWarrieta</h4>','<h4>Magnitude</h4>');
 
       grades.forEach((from, index) => {
         const to = grades[index + 1];
@@ -32,9 +32,9 @@ export default function Legend() {
       div.innerHTML = labels.join('<br>');
       return div;
     };
-
+    
     legend.addTo(map);
   }, [map]);
-
+  
   return null;
 }
