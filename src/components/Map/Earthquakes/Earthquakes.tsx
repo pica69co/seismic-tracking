@@ -4,6 +4,7 @@ import { useMap } from 'react-leaflet';
 import { useQuery } from '@tanstack/react-query';
 
 import { AxiosError } from 'axios';
+
 import Modal from 'react-modal';
 import Spinner from '../../Spinner';
 import { onEachFeature } from './utils';
@@ -58,35 +59,38 @@ export default function Earthquakes() {
 
   if (error && error.response && error.response.status === 400) {
     return (
-<Modal
-  isOpen={modalIsOpen}
-  onRequestClose={closeModal}
-  contentLabel="Time Line Error"
-  style={{
-    overlay: {
-      zIndex: 1000
-    },
-    content: {
-      zIndex: 1001,
-      width: '800px',
-      height: '200px',
-      position: 'absolute',
-      left: '50%',
-      top: '50%',
-      transform: 'translate(-50%, -50%)',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
-    }
-  }}
->
-  <div>
-    <p>Please reduce the selected period (the  d&apos;number of seismic events must be less than 20000).</p>
-    <button type="button" onClick={closeModal}>Close</button>
-  </div>
-</Modal>
-
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Time Line Error"
+        style={{
+          overlay: {
+            zIndex: 1000
+          },
+          content: {
+            zIndex: 1001,
+            width: '800px',
+            height: '200px',
+            position: 'absolute',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }
+        }}>
+        <div>
+          <p>
+            Please reduce the selected period (the d&apos;number of seismic
+            events must be less than 20000).
+          </p>
+          <button type="button" onClick={closeModal}>
+            Close
+          </button>
+        </div>
+      </Modal>
     );
   }
 
