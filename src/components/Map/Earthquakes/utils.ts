@@ -7,6 +7,9 @@ const timeConverter = (time: number, offset: number): string => {
   const nd = new Date(utc + 3600000 * offset);
   return nd.toLocaleString();
 };
+  // console.log(timeConverter(Date.now(), -5));
+
+
 
 const onEachFeature = (feature: FeatureProps, layer: Layer) => {
   const {
@@ -17,7 +20,7 @@ const onEachFeature = (feature: FeatureProps, layer: Layer) => {
   const popupContent = `
     <h3 style="font-size: 1.17em; font-weight: bold">${title}</h3>
     <b>Location</b>: ${place ?? 'Unknown'} <br>
-    <b>Time (GMT-5)</b>: ${timeConverter(time, 2)} <br>
+    <b>Time (GMT-5)</b>: ${timeConverter(time, -5)} <br>
     <b>Lat</b>: ${coordinates[1]} <br>
     <b>Long</b>: ${coordinates[0]} <br>
     <b>Depth</b>: ${coordinates[2]} km <br>
